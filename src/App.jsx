@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import CoreConcepts from "./components/CoreConcepts";
 import { CORE_CONCEPTS } from './data.js';
 
@@ -6,8 +6,7 @@ import { CORE_CONCEPTS } from './data.js';
 function App() {
   return (
     <div>
-      <Header />
-
+      <Header/>
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
