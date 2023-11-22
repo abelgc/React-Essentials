@@ -2,12 +2,16 @@ import Header from "./components/Header/Header";
 import CoreConcepts from "./components/CoreConcepts";
 import TabButton from "./components/TabButton";
 import { CORE_CONCEPTS } from './data.js';
+import { useState } from "react";
 
 
 function App() {
+  //useState should be called on the top of the component level
+  const [selectedTopic, setSelectedTopic] = useState("Please select a tab");
 
-   function handleSelected() {
-      console.log("click")
+   function handleSelected(selectedButton) {
+      setSelectedTopic(selectedButton);
+      console.log(selectedButton)
     }
 
   return (
@@ -31,12 +35,12 @@ function App() {
       <section id="examples">
         <menu>
           {/* <TabButton label="Components">Components</TabButton> */}
-          <TabButton onSelectTab={handleSelected}>Components</TabButton>
-          <TabButton onSelectTab={handleSelected}>JSX</TabButton>
-          <TabButton onSelectTab={handleSelected}>Props</TabButton>
-          <TabButton onSelectTab={handleSelected}>State</TabButton>
+          <TabButton onSelectTab={()=> handleSelected("Components")}>Components</TabButton>
+          <TabButton onSelectTab={()=> handleSelected("JSX")}>JSX</TabButton>
+          <TabButton onSelectTab={()=> handleSelected("Props")}>Props</TabButton>
+          <TabButton onSelectTab={()=> handleSelected("State")}>State</TabButton>
         </menu>
-        Dynamic Content
+          {selectedTopic}
       </section>
     </div>
   );
