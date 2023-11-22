@@ -2,16 +2,15 @@ import React from "react";
 
 // with object destructuring
 
-function CoreConcept2({ image, title, description }) {
-    return (
-      <li>
-        <img src={image} alt={title} />
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </li>
-    );
-
-}
+// export default function CoreConcepts2({ image, title, description }) {
+//   return (
+//     <li>
+//       <img src={image} alt={title} />
+//       <h3>{title}</h3>
+//       <p>{description}</p>
+//     </li>
+//   );
+// }
 
 function CoreConcepts(props) {
     return (
