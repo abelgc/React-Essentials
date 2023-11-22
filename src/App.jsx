@@ -14,6 +14,20 @@ function App() {
       setSelectedTopic(selectedButton);
     }
 
+    let tabContent = <p>Please select a topic.</p>;
+
+    if (selectedTopic) {
+      tabContent = (
+        <div id="tab-content">
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </pre>
+        </div>
+      );
+    }
+
   return (
     <div>
       <Header/>
@@ -35,20 +49,12 @@ function App() {
       <section id="examples">
         <menu>
           {/* <TabButton label="Components">Components</TabButton> */}
-          <TabButton onSelectTab={()=> handleSelected("components")}>Components</TabButton>
-          <TabButton onSelectTab={()=> handleSelected("jsx")}>JSX</TabButton>
-          <TabButton onSelectTab={()=> handleSelected("props")}>Props</TabButton>
-          <TabButton onSelectTab={()=> handleSelected("state")}>State</TabButton>
+          <TabButton  isSelected={selectedTopic === 'components'} onSelectTab={()=> handleSelected("components")}>Components</TabButton>
+          <TabButton  isSelected={selectedTopic === 'jsx'} onSelectTab={()=> handleSelected("jsx")}>JSX</TabButton>
+          <TabButton  isSelected={selectedTopic === 'props'} onSelectTab={()=> handleSelected("props")}>Props</TabButton>
+          <TabButton  isSelected={selectedTopic === 'state'} onSelectTab={()=> handleSelected("state")}>State</TabButton>
         </menu>
-        {!selectedTopic ? <p>Click on a tab to show the example</p> : null}
-        {!!selectedTopic ? <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div> : null}
-        
+        {tabContent}             
       </section>
     </div>
   );
