@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function App() {
   //useState should be called on the top of the component level
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
 
    function handleSelected(selectedButton) {
       setSelectedTopic(selectedButton);
@@ -40,13 +40,15 @@ function App() {
           <TabButton onSelectTab={()=> handleSelected("props")}>Props</TabButton>
           <TabButton onSelectTab={()=> handleSelected("state")}>State</TabButton>
         </menu>
-        <div id="tab-content">
+        {!selectedTopic ? <p>Click on a tab to show the example</p> : null}
+        {!!selectedTopic ? <div id="tab-content">
             <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
               <code>{EXAMPLES[selectedTopic].code}</code>
             </pre>
-          </div>
+          </div> : null}
+        
       </section>
     </div>
   );
